@@ -1,0 +1,26 @@
+--Create a clothing store database
+
+CREATE TABLE store (id INTEGER, name TEXT, material_used TEXT, price INTEGER, aisle_number INTEGER);
+
+INSERT INTO store VALUES (1, "Blouse", "Satin", 30, 3);
+INSERT INTO store VALUES (2, "Tank Top", "Cotton", 15, 6);
+INSERT INTO store VALUES (3, "Jeans", "Denim", 50, 4);
+INSERT INTO store VALUES (4, "Leggings", "Cotton", 25, 4);
+INSERT INTO store VALUES (5, "Athletic Top", "Polyester", 50, 5);
+INSERT INTO store VALUES (6, "Athletic Leggings", "Polyester", 55, 5);
+INSERT INTO store VALUES (7, "Shoes", "Leather", 45, 7);
+INSERT INTO store VALUES (8, "Earrings", "Stainless Steel", 15, 2);
+INSERT INTO store VALUES (9, "Girls Tops", "cotton", 20, 8);
+INSERT INTO store VALUES (10, "Dresses", "Satin", 55, 3);
+INSERT INTO store VALUES (11, "Jumpsuits", "Cotton", 55, 3);
+INSERT INTO store VALUES (12, "Romper", "Cotton", 55, 3);
+INSERT INTO store VALUES (13, "Girls Dresses", "Cotton", 30, 9);
+INSERT INTO Store VALUES (14, "Sunglasses", "Plastic", 15, 8);
+INSERT INTO store VALUES (15, "Bracelet", "Leather", 15, 8);
+
+--display everything where price is less than 30 dollars
+SELECT * FROM store WHERE price < 30;
+
+--display the sum of price of everything less than 30 dollars
+SELECT SUM (price) FROM store 
+
