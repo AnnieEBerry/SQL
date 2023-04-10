@@ -1,0 +1,91 @@
+--Create table for singers id, name, and age--
+
+CREATE TABLE singers (id INTEGER PRIMARY KEY,
+    name TEXT,
+    age INTEGER);
+
+INSERT INTO singers (name, age)
+    VALUES ("G-eazy", 33);
+INSERT INTO singers (name, age)
+    VALUES ("Yung Gravy", 27); 
+INSERT INTO singers (name, age) VALUES ("Tyga", 33);
+INSERT INTO singers (name, age) VALUES ("Justin Bieber", 29);
+INSERT INTO singers (name, age) VALUES ("Nelly", 48);
+INSERT INTO singers (name, age) VALUES ("50 Cent", 47);
+INSERT INTO singers (name, age) VALUES ("Taylor Swift", 33);
+INSERT INTO singers (name, age) VALUES ("Selena Gomez", 30);
+INSERT INTO singers (name, age) VALUES ("The Weeknd", 33);
+INSERT INTO singers (name, age) VALUES ("Lil Jon", 52);
+INSERT INTO singers (name, age) VALUES ("Kid Cudi", 39);
+INSERT INTO singers (name, age) VALUES ("Post Malone", 27);
+INSERT INTO singers (name, age) VALUES ("Drake", 36);
+INSERT INTO singers (name, age) VALUES ("Rihanna", 35);
+INSERT INTO singers (name, age) VALUES ("Jay-Z", 53);
+INSERT INTO singers (name, age) VALUES ("Calvin Harris", 39);
+INSERT INTO singers (name, age) VALUES ("Doja Cat", 27);
+INSERT INTO singers (name, age) VALUES ("Big Sean", 35);
+INSERT INTO singers (name, age) VALUES ("David Banner", 48);
+INSERT INTO singers (name, age) VALUES ("Beyonce", 41);
+
+--Create table of singers hometown including hometown, state, and country--
+CREATE TABLE singers_hometown (id INTEGER, hometown TEXT, state TEXT,country TEXT);
+
+INSERT INTO singers_hometown VALUES (1,"Oakland","CA", "USA");
+INSERT INTO singers_hometown VALUES (2,"Rochester","MN", "USA");
+INSERT INTO singers_hometown VALUES (3,"Compton","CA", "USA");
+INSERT INTO singers_hometown VALUES (4,"London","Ontario", "Canada");
+INSERT INTO singers_hometown VALUES (5,"St. Louis","MO", "USA");
+INSERT INTO singers_hometown VALUES (6,"New York","NY", "USA");
+INSERT INTO singers_hometown VALUES (7,"West Reading","PA", "USA");
+INSERT INTO singers_hometown VALUES (8,"Grand Prairie","TX", "USA");
+INSERT INTO singers_hometown VALUES (9,NULL,"Toronto", "Canada");
+INSERT INTO singers_hometown VALUES (10, "Atlanta", "GA", "USA");
+INSERT INTO singers_hometown VALUES (11, "Cleveland", "OH", "USA");
+INSERT INTO singers_hometown VALUES (12,"Syracuse", "NY","USA");
+INSERT INTO singers_hometown VALUES (13, NULL, "Toronto", "Canada");
+INSERT INTO singers_hometown VALUES (14,"Saint Michael",NULL, "Barbados");
+INSERT INTO singers_hometown VALUES (15, "New York", "NY", "USA");
+INSERT INTO singers_hometown VALUES (16, "Dunfries", NULL, "UK");
+INSERT INTO singers_hometown VALUES (17, "Los Angeles", "CA", "USA");
+INSERT INTO singers_hometown VALUES (18, "Santa Monica", "CA", "USA");
+INSERT INTO singers_hometown VALUES (19, "Brookhaven", "MS", "USA");
+INSERT INTO singers_hometown VALUES (20, "Houston", "TX", "USA");
+
+--Create table of singers songs including id, name of song, and the year it was released--
+CREATE TABLE songs (id INTEGER, name TEXT, released INTEGER);
+
+INSERT INTO songs VALUES (1, "I Mean It", 2014);
+INSERT INTO songs VALUES (2, "Betty - Get Money",2022);
+INSERT INTO songs VALUES (3, "Rack City", 2012);
+INSERT INTO songs VALUES (4, "Baby", 2010);
+INSERT INTO songs VALUES (5, "Country Grammar", 2000);
+INSERT INTO songs VALUES (6, "Candy Shop", 2009);
+INSERT INTO songs VALUES (7, "Lavender Haze", 2023);
+INSERT INTO songs VALUES (8, "Good For You", 2015);
+INSERT INTO songs VALUES (9, "Blinding Lights", 2020);
+INSERT INTO songs VALUES (10, "Get Low", 2002);
+INSERT INTO songs VALUES (11, "Day N' Night", 2009);
+INSERT INTO songs VALUES (12, "I Like You", 2022);
+INSERT INTO songs VALUES (13, "One Dance", 2016);
+INSERT INTO songs VALUES (14, "Work", 2016);
+INSERT INTO songs VALUES (15, "Empire State of Mind", 2009);
+INSERT INTO songs VALUES (16, "Summer",2014);
+INSERT INTO songs VALUES (17, "Get Into It", 2021);
+INSERT INTO songs VALUES (18, "Bounce Back", 2017);
+INSERT INTO songs VALUES (19, "Cadillac on 22's", 2003);
+INSERT INTO songs VALUES (20, "Single Ladies", 2008);
+
+-- Joined tables singers and singers_hometown together--
+SElECT singers.name, singers.age, singers_hometown.hometown, singers_hometown.state, singers_hometown.country FROM singers JOIN singers_hometown ON singers.id= singers_hometown.id;
+
+--Joined singers and singers_hometown and then determined which singers are from New York (city)--
+SELECT singers.name, singers_hometown.hometown FROM singers JOIN singers_hometown ON singers.id=singers_hometown.id WHERE hometown= "New York";
+
+--Joined tables singers and songs--
+SELECT singers.name, songs.name, songs.released FROM singers JOIN songs ON singers.id = songs.id;
+
+--after tables were joined, determined which songs were released after 2010--
+SELECT songs.name, songs.released FROM songs WHERE released >2010;
+
+--Determined which songs were released in the year 2017
+SELECT songs.name, songs.released FROM songs WHERE released = 2017
