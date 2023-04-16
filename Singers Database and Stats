@@ -1,13 +1,12 @@
 --Create table for singers id, name, and age--
 
-CREATE TABLE singers (id INTEGER PRIMARY KEY,
+CREATE TABLE singers 
+    (id INTEGER PRIMARY KEY,
     name TEXT,
     age INTEGER);
 
-INSERT INTO singers (name, age)
-    VALUES ("G-eazy", 33);
-INSERT INTO singers (name, age)
-    VALUES ("Yung Gravy", 27); 
+INSERT INTO singers (name, age) VALUES ("G-eazy", 33);
+INSERT INTO singers (name, age) VALUES ("Yung Gravy", 27); 
 INSERT INTO singers (name, age) VALUES ("Tyga", 33);
 INSERT INTO singers (name, age) VALUES ("Justin Bieber", 29);
 INSERT INTO singers (name, age) VALUES ("Nelly", 48);
@@ -27,7 +26,7 @@ INSERT INTO singers (name, age) VALUES ("Big Sean", 35);
 INSERT INTO singers (name, age) VALUES ("David Banner", 48);
 INSERT INTO singers (name, age) VALUES ("Beyonce", 41);
 
---Create table of singers hometown including hometown, state, and country--
+--Create table singers hometown including hometown, state, and country--
 CREATE TABLE singers_hometown (id INTEGER, hometown TEXT, state TEXT,country TEXT);
 
 INSERT INTO singers_hometown VALUES (1,"Oakland","CA", "USA");
@@ -76,7 +75,7 @@ INSERT INTO songs VALUES (19, "Cadillac on 22's", 2003);
 INSERT INTO songs VALUES (20, "Single Ladies", 2008);
 
 -- Joined tables singers and singers_hometown together--
-SElECT singers.name, singers.age, singers_hometown.hometown, singers_hometown.state, singers_hometown.country FROM singers JOIN singers_hometown ON singers.id= singers_hometown.id;
+SELECT singers.name, singers.age, singers_hometown.hometown, singers_hometown.state, singers_hometown.country FROM singers JOIN singers_hometown ON singers.id= singers_hometown.id;
 
 --Joined singers and singers_hometown and then determined which singers are from New York (city)--
 SELECT singers.name, singers_hometown.hometown FROM singers JOIN singers_hometown ON singers.id=singers_hometown.id WHERE hometown= "New York";
@@ -84,7 +83,7 @@ SELECT singers.name, singers_hometown.hometown FROM singers JOIN singers_hometow
 --Joined tables singers and songs--
 SELECT singers.name, songs.name, songs.released FROM singers JOIN songs ON singers.id = songs.id;
 
---after tables were joined, determined which songs were released after 2010--
+--After tables were joined, determined which songs were released after 2010--
 SELECT songs.name, songs.released FROM songs WHERE released >2010;
 
 --Determined which songs were released in the year 2017
