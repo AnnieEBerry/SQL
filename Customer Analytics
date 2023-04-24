@@ -51,3 +51,35 @@ ON FEB.orderid=cust.order_id
 WHERE Feb.Quantity>2
 AND length(orderid) = 6 
 AND orderid <> 'Order ID'
+
+--Selecting the orderdate between specific time frames--
+SELECT orderdate
+FROM BIT_DB.FebSales
+WHERE orderdate between '02/13/19 00:00' AND '02/18/19 00:00';
+
+--Selecting the location where orders are from at specific date and times--
+SELECT location
+FROM BIT_DB.FebSales
+WHERE orderdate = '02/18/19 01:35';
+
+--Selecting the sum of products using LIKE to produce values on that specific day but ordered at any time--
+SELECT sum(quantity)
+FROM Bit_DB.Febsales
+WHERE orderdate LIKE '02/18/19%';
+
+--Viewing Products LIKE batteries--
+SELECT distinct Product
+FROM Bit_DB.FebSales
+WHERE Product LIKE '%Batteries%';
+
+--Selecting producst with a price ending in .99--
+SELECT distinct Product, Price
+FROM Bit_DB.Febsales
+WHERE Price like '%.99';
+
+--Total quantity of products that where ordered in Los Angeles using the like function--
+SELECT Product, SUM(quantity)
+FROM Bit_DB.FebSales
+WHERE location LIKE'%Los Angeles%' 
+GROUP BY Product;
+
